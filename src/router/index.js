@@ -29,6 +29,10 @@ const routes = [
       {
         path: '/admin/content/tag/list',
         component: () => import('../views/sys-admin/product/TagListView.vue')
+      },
+      {
+        path: '/admin/content/user/add-new',
+        component: () => import('../views/sys-admin/product/UserAddNewView.vue')
       }
     ]
   },

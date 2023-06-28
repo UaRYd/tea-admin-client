@@ -7,7 +7,6 @@
     "build": "vue-cli-service build"
   },
   "dependencies": {
-    "@vue/devtools": "^6.5.0",
     "axios": "^1.4.0",
     "core-js": "^3.8.3",
     "element-ui": "^2.15.13",

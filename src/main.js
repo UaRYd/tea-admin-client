@@ -17,6 +17,8 @@ Vue.prototype.axios = axios;
 Vue.use(ElementUI);
 Vue.config.productionTip = false
 
+axios.defaults.withCredentials=true;
+
 new Vue({
   router,
   store,

@@ -42,7 +42,7 @@ export default {
     submitForm(formName) {
       this.$refs[formName].validate((valid) => {
         if (valid) {
-          let url = 'http://localhost:9081/admin/login';
+          let url = 'http://localhost:9081/account/users/login';
           console.log('url = ' + url);
 
           let formData = this.qs.stringify(this.ruleForm);
@@ -55,10 +55,6 @@ export default {
                 message: '登陆成功！',
                 type: 'success'
               });
-              let jwt = jsonResult.data;
-              localStorage.setItem('localJwt', jwt);
-              let localJwt = localStorage.getItem('localJwt');
-              console.log(localJwt);
               this.$router.push('/');
             } else {
               this.$alert(jsonResult.message, '错误', {

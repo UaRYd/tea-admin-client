@@ -45,6 +45,10 @@
                 <i class="el-icon-circle-plus"></i>
                 <span slot="title">标签列表</span>
               </el-menu-item>
+              <el-menu-item index="/admin/content/user/add-new">
+                <i class="el-icon-circle-plus"></i>
+                <span slot="title">新增用户</span>
+              </el-menu-item>
             </el-submenu>
           </el-menu>
         </el-aside>
