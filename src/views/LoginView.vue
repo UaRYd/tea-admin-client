@@ -52,12 +52,20 @@ export default {
             let jsonResult = response.data;
             if (jsonResult.state == 20000) {
               this.$message({
-                message: '登陆成功！',
+                message: '登录成功！',
                 type: 'success'
               });
+              let loginResult = jsonResult.data;
+              localStorage.setItem('localJwt', loginResult.jwt);
+              localStorage.setItem('currentUserId', loginResult.id);
+              localStorage.setItem('currentUserName', loginResult.username);
+              localStorage.setItem('currentUserAvatar', loginResult.avatar);
               this.$router.push('/');
+            } else if (jsonResult.state == 40100) {
+              this.$message.error(jsonResult.message);
             } else {
-              this.$alert(jsonResult.message, '错误', {
+              let title = '操作失败';
+              this.$alert(jsonResult.message, title, {
                 confirmButtonText: '确定',
                 callback: action => {
                 }

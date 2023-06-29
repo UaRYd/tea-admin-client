@@ -79,7 +79,9 @@ export default {
       let url = 'http://localhost:9081/content/tags/type/list?queryType=all';
       console.log('url = ' + url);
 
-      this.axios.get(url).then((response) => {
+      this.axios
+          .create({'headers': {'Authorization': localStorage.getItem('localJwt')}})
+          .get(url).then((response) => {
         let jsonResult = response.data;
         if (jsonResult.state == 20000) {
           this.tagTypeOptions = jsonResult.data.list;
@@ -105,7 +107,9 @@ export default {
           let formData = this.qs.stringify(this.ruleForm);
           console.log('formData = ' + formData);
 
-          this.axios.post(url, formData).then((response) => {
+          this.axios
+              .create({'headers': {'Authorization': localStorage.getItem('localJwt')}})
+              .post(url, formData).then((response) => {
             let jsonResult = response.data;
             if (jsonResult.state == 20000) {
               this.$message({

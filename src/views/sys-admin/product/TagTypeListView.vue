@@ -80,7 +80,9 @@ export default {
       }
       console.log("url = " + url);
 
-      this.axios.post(url).then((response) => {
+      this.axios
+          .create({'headers': {'Authorization': localStorage.getItem('localJwt')}})
+          .post(url).then((response) => {
         let jsonResult = response.data;
         if (jsonResult.state == 20000) {
           this.$message({
@@ -118,7 +120,9 @@ export default {
       let url = 'http://localhost:9081/content/tags/type/list?page=' + page;
       console.log('url = ' + url);
 
-      this.axios.get(url).then((response) => {
+      this.axios
+          .create({'headers': {'Authorization': localStorage.getItem('localJwt')}})
+          .get(url).then((response) => {
         let jsonResult = response.data;
         if (jsonResult.state == 20000) {
           this.tableData = jsonResult.data.list;

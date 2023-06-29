@@ -33,6 +33,18 @@ const routes = [
       {
         path: '/admin/content/user/add-new',
         component: () => import('../views/sys-admin/product/UserAddNewView.vue')
+      },
+      {
+        path: '/admin/content/user/list',
+        component: () => import('../views/sys-admin/product/UserListView.vue')
+      },
+      {
+        path: '/admin/content/category/add-new',
+        component: () => import('../views/sys-admin/product/CategoryAddNewView.vue')
+      },
+      {
+        path: '/admin/content/category/list',
+        component: () => import('../views/sys-admin/product/CategoryListView.vue')
       }
     ]
   },

@@ -4,6 +4,19 @@
     <el-container>
       <!-- 上半部分：顶栏 -->
       <el-header class="layout-header">
+        <!-- 顶栏右侧的当前用户信息及下拉菜单 -->
+        <div class="login-user">
+          <span>欢迎回来，<b>{{currentUserName}}</b>！</span>
+          <el-dropdown @command="handleCommand">
+            <el-avatar size="medium" :src="currentUserAvatar"></el-avatar>
+            <el-dropdown-menu slot="dropdown">
+              <el-dropdown-item icon="el-icon-plus" command="openEditInfoDialog">修改资料</el-dropdown-item>
+              <el-dropdown-item icon="el-icon-plus" command="openEditAvatarDialog">修改头像</el-dropdown-item>
+              <el-dropdown-item icon="el-icon-plus" command="openEditPasswordDialog">修改密码</el-dropdown-item>
+              <el-dropdown-item icon="el-icon-plus" command="openLogoutConfirm">退出登录</el-dropdown-item>
+            </el-dropdown-menu>
+          </el-dropdown>
+        </div>
         <!-- 左侧的标题文字 -->
         <h1>学茶商城后台管理平台</h1>
       </el-header>
@@ -49,6 +62,22 @@
                 <i class="el-icon-circle-plus"></i>
                 <span slot="title">新增用户</span>
               </el-menu-item>
+              <el-menu-item index="/admin/content/user/add-new">
+                <i class="el-icon-circle-plus"></i>
+                <span slot="title">新增用户</span>
+              </el-menu-item>
+              <el-menu-item index="/admin/content/user/list">
+                <i class="el-icon-circle-plus"></i>
+                <span slot="title">用户列表</span>
+              </el-menu-item>
+              <el-menu-item index="/admin/content/category/add-new">
+                <i class="el-icon-circle-plus"></i>
+                <span slot="title">添加类别</span>
+              </el-menu-item>
+              <el-menu-item index="/admin/content/category/list">
+                <i class="el-icon-circle-plus"></i>
+                <span slot="title">类别列表</span>
+              </el-menu-item>
             </el-submenu>
           </el-menu>
         </el-aside>
@@ -63,10 +92,54 @@
 </template>
 
 <script>
-
+export default {
+  data() {
+    return {
+      currentUserName: '',
+      currentUserAvatar: ''
+    }
+  },
+  methods: {
+    handleCommand(command) {
+      switch (command) {
+        case "openEditInfoDialog": this.openEditInfoDialog();
+          break;
+        case "openEditAvatarDialog": this.openEditAvatarDialog();
+          break;
+        case "openEditPasswordDialog": this.openEditPasswordDialog();
+          break;
+        case "openLogoutConfirm": this.openLogoutConfirm();
+          break;
+      }
+    },
+    loadCurrentUserInfo() {
+      this.currentUserName = localStorage.getItem('currentUserName');
+      this.currentUserAvatar = localStorage.getItem('currentUserAvatar');
+    },
+    openEditInfoDialog() {
+      console.log("修改资料");
+    },
+    openEditAvatarDialog() {
+      console.log("修改头像");
+    },
+    openEditPasswordDialog() {
+      console.log("修改密码");
+    },
+    openLogoutConfirm() {
+      console.log("确认退出");
+    }
+  },
+  mounted() {
+    this.loadCurrentUserInfo();
+  }
+}
 </script>
 
 <style>
+.layout-header .login-user {
+  float: right;
+}
+
 .layout-header {
   background: #2c3e50;
 }
