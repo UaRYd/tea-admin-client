@@ -114,7 +114,7 @@ export default {
       }
       this.$refs[formName].validate((valid) => {
         if (valid) {
-          let url = 'http://localhost:9080/categories/add-new';
+          let url = 'http://localhost:9081/content/category/add-new';
           console.log('url = ' + url);
 
           let formData = this.qs.stringify(this.ruleForm);
@@ -152,7 +152,7 @@ export default {
     },
     // 加载类别树的数据
     loadCategoryTree() {
-      let url = 'http://localhost:9080/categories/tree';
+      let url = 'http://localhost:9081/categories/tree';
       console.log('url = ' + url);
 
       this.axios

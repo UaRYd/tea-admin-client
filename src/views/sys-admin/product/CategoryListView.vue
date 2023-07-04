@@ -178,7 +178,7 @@ export default {
     // 切换启用状态
     toggleEnable(category) {
       let enableText = ['禁用', '启用'];
-      let url = 'http://localhost:9080/categories/' + category.id;
+      let url = 'http://localhost:9081/categories/' + category.id;
       let enable = category.enable;
       if (enable == 1) {
         url += '/enable';
@@ -216,7 +216,7 @@ export default {
     // 切换显示状态
     toggleDisplay(category) {
       let displayText = ['不显示在导航栏', '显示在导航栏'];
-      let url = 'http://localhost:9080/categories/' + category.id;
+      let url = 'http://localhost:9081/categories/' + category.id;
       let isDisplay = category.isDisplay;
       if (isDisplay == 1) {
         url += '/display';
@@ -253,7 +253,7 @@ export default {
     },
     // 打开编辑对话框
     openEditDialog(category) {
-      let url = 'http://localhost:9080/categories/' + category.id;
+      let url = 'http://localhost:9081/categories/' + category.id;
       console.log('url = ' + url);
 
       this.axios
@@ -281,7 +281,7 @@ export default {
     },
     // 提交编辑表单
     submitEditForm() {
-      let url = 'http://localhost:9080/categories/' + this.editForm.id + '/update';
+      let url = 'http://localhost:9081/category/' + this.editForm.id + '/update';
       console.log('url = ' + url);
 
       let formData = this.qs.stringify(this.editForm);
@@ -332,7 +332,7 @@ export default {
     },
     // 处理删除
     handleDelete(category) {
-      let url = 'http://localhost:9080/categories/' + category.id + '/delete';
+      let url = 'http://localhost:9081/categories/' + category.id + '/delete';
       console.log('url = ' + url);
 
       this.axios
@@ -363,7 +363,7 @@ export default {
     },
     // 加载类别列表
     loadCategoryList() {
-      let url = 'http://localhost:9080/categories/list-by-parent?queryType=all&parentId=' + this.currentParentId;
+      let url = 'http://localhost:9081/categories/list-by-parent?queryType=all&parentId=' + this.currentParentId;
       console.log('url = ' + url);
 
       this.axios
